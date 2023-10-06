@@ -1,0 +1,10 @@
+{
+  "workspaces": [
+    "services/*"
+  ],
+  "private": true,
+  "dependencies": {
+    "@types/node": "^20.8.2",
+    "typescript": "^5.2.2"
+  }
+}

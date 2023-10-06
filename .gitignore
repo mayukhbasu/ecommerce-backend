@@ -1,3 +1,3 @@
 node_modules/
 package-lock.json
-services/user-service/dist
+services/user-service/dist/

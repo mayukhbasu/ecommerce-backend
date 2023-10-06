@@ -16,6 +16,7 @@ mongoose_1.default.connect('mongodb://localhost:27017/registration', {
 }).catch((err) => {
     console.log(err);
 });
+app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.send('User Service Running!');
 });

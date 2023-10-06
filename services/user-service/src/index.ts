@@ -15,6 +15,8 @@ mongoose.connect('mongodb://localhost:27017/registration', {
     console.log(err);   
 });
 
+app.use(express.json());
+
 
 
 app.get('/', (req: Request, res: Response) => {

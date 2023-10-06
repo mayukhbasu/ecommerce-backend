@@ -19,4 +19,24 @@ router.post('/register', async (req: Request, res: Response) => {
   } catch(err) {
     res.status(500).json({ error: 'Server error' });
   }
-})
+});
+
+router.post('/login', async (req: Request, res: Response) => {
+  try {
+    const {email, password} = req.body;
+    const user: IUser | null = await User.findOne({email});
+    if(!user) {
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
+    const isMatch: boolean = await bcrypt.compare(password, user.password);
+    if(!isMatch) {
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
+    const token: string = jwt.sign({id: user._id}, 'SECRET', { expiresIn: '1h' });
+    res.json({token, user: {id: user._id, email: user.email, username: user.username}});
+  } catch(err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+export default router

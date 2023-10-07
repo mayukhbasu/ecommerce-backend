@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 
 import User, { IUser } from '../models/User';
+import { authenticateUser } from '../middleware/authenticateToken';
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.post('/register', async (req: Request, res: Response) => {
 
 
 
-router.post('/login', async (req: Request, res: Response) => {
+router.post('/login',authenticateUser, async (req: Request, res: Response) => {
   try {
     const {email, password} = req.body;
     const user: IUser | null = await User.findOne({email});

@@ -41,7 +41,7 @@ const redisClient = redis.createClient();
 dotenv_1.default.config();
 app.use((0, express_session_1.default)({
     store: new RedisStore({ client: redisClient }),
-    secret: 'yourSecretKey',
+    secret: process.env.REDIS_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {

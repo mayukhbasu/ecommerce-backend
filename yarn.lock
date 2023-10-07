@@ -133,6 +133,16 @@
   resolved "https://registry.npmjs.org/@types/chai/-/chai-4.3.6.tgz"
   integrity sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==
 
+"@types/connect-redis@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.npmjs.org/@types/connect-redis/-/connect-redis-0.0.21.tgz"
+  integrity sha512-xIrcRu9Qt5HVXUKVxkUI2m53Pt4WrvstMLSXsdWqeb3v8MeM48O+fb+3Bm0aDfAjIwR81+zV676Iuaw/OYsXyw==
+  dependencies:
+    "@types/express" "*"
+    "@types/express-session" "*"
+    "@types/redis" "^2.8.0"
+    ioredis "^5.3.0"
+
 "@types/connect@*":
   version "3.4.36"
   resolved "https://registry.npmjs.org/@types/connect/-/connect-3.4.36.tgz"
@@ -227,6 +237,13 @@
   integrity sha512-7jkMKxcGq9p242exlbsVzuJb57KqHRhNl4dHoQu2Y5v9bCAbtIXXH0R3HleSQW4CTOqpHIYUW3t6tpUj4BVQ+w==
   dependencies:
     "@types/node" "*"
+
+"@types/redis@^4.0.11":
+  version "4.0.11"
+  resolved "https://registry.npmjs.org/@types/redis/-/redis-4.0.11.tgz"
+  integrity sha512-bI+gth8La8Wg/QCR1+V1fhrL9+LZUSWfcqpOj2Kc80ZQ4ffbdL173vQd5wovmoV9i071FU9oP2g6etLuEwb6Rg==
+  dependencies:
+    redis "*"
 
 "@types/send@*":
   version "0.17.2"
@@ -590,6 +607,11 @@ concat-map@0.0.1:
   resolved "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
+connect-redis@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/connect-redis/-/connect-redis-6.0.0.tgz"
+  integrity sha512-6eGEAAPHYvcfbRNCMmPzBIjrqRWLw7at9lCUH4G6NQ8gwWDJelaUmFNOqPIhehbw941euVmIuqWsaWiKXfb+5g==
+
 console-control-strings@^1.0.0, console-control-strings@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/console-control-strings/-/console-control-strings-1.1.0.tgz"
@@ -769,7 +791,7 @@ etag@~1.8.1:
   resolved "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz"
   integrity sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==
 
-express-session@>=1:
+express-session@^1.17.3:
   version "1.17.3"
   resolved "https://registry.npmjs.org/express-session/-/express-session-1.17.3.tgz"
   integrity sha512-4+otWXlShYlG1Ma+2Jnn+xgKUZTMJ5QD3YvfilX3AcocOAbIkVylSWEklzALe/+Pu4qV6TYBj5GwOBFfdKqLBw==
@@ -1634,7 +1656,7 @@ redis-parser@^3.0.0:
   dependencies:
     redis-errors "^1.0.0"
 
-redis@*:
+redis@*, redis@^4.6.10:
   version "4.6.10"
   resolved "https://registry.npmjs.org/redis/-/redis-4.6.10.tgz"
   integrity sha512-mmbyhuKgDiJ5TWUhiKhBssz+mjsuSI/lSZNPI9QvZOYzWvYGejtb+W3RlDDf8LD6Bdl5/mZeG8O1feUGhXTxEg==
@@ -1930,17 +1952,11 @@ unpipe@~1.0.0, unpipe@1.0.0:
   version "1.0.0"
   resolved "file:services/user-service"
   dependencies:
-    "@types/bcrypt" "^5.0.0"
-    "@types/bcryptjs" "^2.4.4"
-    "@types/connect-redis" "^0.0.21"
-    "@types/express-session" "^1.17.8"
-    "@types/jsonwebtoken" "^9.0.3"
     "@types/redis" "^4.0.11"
     bcrypt "^5.1.1"
     bcryptjs "^2.4.3"
-    connect-redis "^7.1.0"
+    connect-redis "6.0.0"
     express "^4.18.2"
-    express-session "^1.17.3"
     jsonwebtoken "^9.0.2"
     mongoose "^7.5.4"
     redis "^4.6.10"

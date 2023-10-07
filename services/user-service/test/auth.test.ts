@@ -4,10 +4,30 @@ import { MongoClientOptions } from 'mongodb';
 import app from "../src/index";
 import mongoose from 'mongoose';
 import User from '../src/models/User';
+import redisMock from 'redis-mock';
+import session from 'express-session';
+import connectRedis from 'connect-redis';
 
-const {expect} = chai;
+const { expect } = chai;
 chai.use(chaiHttp);
 
+// Use the Redis mock instead of the real Redis client.
+const RedisStore = connectRedis(session);
+const redisClient = redisMock.createClient();
+
+// Setup the app to use the mock Redis store.
+app.use(
+    session({
+        store: new RedisStore({ client: redisClient as any }),
+        secret: 'yourSecretKey',
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+        }
+    })
+);
 
 describe('Auth Routes', () => {
   before(async() => {
@@ -19,6 +39,7 @@ describe('Auth Routes', () => {
 
   after(async() => {
     await mongoose.disconnect();
+    
   });
   
   beforeEach(async () => {
@@ -44,4 +65,4 @@ describe('Auth Routes', () => {
     expect(res.status).to.equal(400);
     expect(res.body.error).to.equal('User already exists');
   });
-})
+});

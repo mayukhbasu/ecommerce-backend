@@ -19,9 +19,7 @@ mongoose_1.default.connect('mongodb://localhost:27017/registration', {
 });
 app.use(express_1.default.json());
 app.use('/auth', auth_1.default);
-app.get('/', (req, res) => {
-    res.send('User Service Running!');
-});
 app.listen(PORT, () => {
     console.log(`User Service started on port ${PORT}`);
 });
+exports.default = app;

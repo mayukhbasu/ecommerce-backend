@@ -110,7 +110,8 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/**/*.ts"  // Glob pattern to specify which .ts files should be included in the compilation process
+    "src/**/*.ts",
+    "types/**/*"  // Glob pattern to specify which .ts files should be included in the compilation process
   ],
   "exclude": [
     "node_modules" // Generally, you don't want to compile node_modules

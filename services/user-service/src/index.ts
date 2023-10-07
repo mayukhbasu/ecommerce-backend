@@ -20,12 +20,6 @@ mongoose.connect('mongodb://localhost:27017/registration', {
 app.use(express.json());
 app.use('/auth', authRoutes);
 
-
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('User Service Running!');
-});
-
 app.listen(PORT, () => {
     console.log(`User Service started on port ${PORT}`);
 });

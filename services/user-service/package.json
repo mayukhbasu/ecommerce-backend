@@ -9,9 +9,7 @@
     "test": "mocha -r ts-node/register test/**/*.test.ts"
   },
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/bcryptjs": "^2.4.4",
-    "@types/jsonwebtoken": "^9.0.3",
+    
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
@@ -26,6 +24,10 @@
     "@types/mocha": "^10.0.2",
     "@types/mongoose": "^5.11.97",
     "@types/supertest": "^2.0.14",
+    "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.4",
+    "@types/express-session": "^1.17.8",
+    "@types/jsonwebtoken": "^9.0.3",
     "chai": "^4.3.10",
     "chai-http": "^4.4.0",
     "mocha": "^10.2.0",

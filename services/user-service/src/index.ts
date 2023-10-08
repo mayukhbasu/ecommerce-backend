@@ -4,9 +4,11 @@ import express from 'express';
 import mongoose  from 'mongoose';
 import session from 'express-session';
 import connectRedis from 'connect-redis';
+import cookieParser from 'cookie-parser';
 import * as redis from 'redis';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
+import profileRoutes from './routes/profile';
 
 
 const app = express();
@@ -28,6 +30,7 @@ app.use(
         }
     })
 );
+app.use(cookieParser());
 mongoose.connect(process.env.REGISTRATION_DATABASE as string, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -39,6 +42,7 @@ mongoose.connect(process.env.REGISTRATION_DATABASE as string, {
 
 app.use(express.json());
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 app.listen(PORT, () => {
     console.log(`User Service started on port ${PORT}`);

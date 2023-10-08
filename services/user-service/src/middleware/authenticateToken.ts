@@ -3,6 +3,7 @@ import User, { IUser } from '../models/User';
 
 export const authenticateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    console.log(req.cookies)
     const userId = req.cookies['userId'];
     if(!userId) {
       return res.status(401).json({ error: 'Not authenticated' });
@@ -15,6 +16,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
     req.user = user;
     next();
   } catch(err) {
+    console.log(err)
     res.status(500).json({ error: 'Server error' });
   }
 }

@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import User, { IUser } from '../models/User';
+import User, { IUser } from './User';
 
 export const authenticateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -13,7 +13,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
     if (!user) {
       return res.status(401).json({ error: 'Not authenticated' });
     }
-    req.user = user;
+    (req as any).user = user;
     next();
   } catch(err) {
     console.log(err)

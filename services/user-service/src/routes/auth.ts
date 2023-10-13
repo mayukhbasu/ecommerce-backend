@@ -1,9 +1,8 @@
 import express, { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer';
+import { User, IUser } from "shared-auth-lib";
 
-import User, { IUser } from '../models/User';
-import { authenticateUser } from '../middleware/authenticateToken';
 
 const router = express.Router();
 const transporter = nodemailer.createTransport({

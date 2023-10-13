@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import User, { IUser } from '../models/User';
-import { authenticateUser } from '../middleware/authenticateToken'; 
+
+import { authenticateUser, IUser, User }  from 'shared-auth-lib'; 
 
 const router = express.Router();
 
